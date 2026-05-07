@@ -1,26 +1,147 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-paper-50: #fef2f2;
+  --color-paper-100: #fee2e2;
+  --color-paper-200: #fecaca;
+  --color-paper-300: #fca5a5;
+  --color-paper-400: #f87171;
+  --color-paper-500: #DC2626;
+  --color-paper-600: #B91C1C;
+  --color-paper-700: #991B1B;
+  --color-paper-800: #7F1D1D;
+  --color-paper-900: #450a0a;
+  --color-paper-950: #2a0505;
+
+  --color-rice-50: #fdfcfb;
+  --color-rice-100: #f5f0e8;
+  --color-rice-200: #ebe0cc;
+  --color-rice-300: #ddd0b5;
+  --color-rice-400: #c9b896;
+
+  --color-ink-700: #374151;
+  --color-ink-800: #1f2937;
+  --color-ink-900: #111827;
+  --color-ink-950: #0a0a0a;
+
+  --color-gold-400: #facc15;
+  --color-gold-500: #eab308;
+  --color-gold-600: #ca8a04;
+
+  --font-serif: var(--font-serif), serif;
+  --font-sans: var(--font-sans), sans-serif;
+
+  --animate-paper-unfold: paper-unfold 1.2s ease-out forwards;
+  --animate-title-reveal: title-reveal 0.8s ease-out forwards;
+  --animate-breathe: breathe 2s ease-in-out infinite;
+  --animate-scissor-snip: scissor-snip 1.5s ease-in-out infinite;
+  --animate-paper-flip: paper-flip 1s ease-out forwards;
+  --animate-fade-up: fade-up 0.8s ease-out forwards;
+  --animate-slide-in-left: slide-in-left 0.8s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.8s ease-out forwards;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@keyframes paper-unfold {
+  0% { transform: scaleX(0); opacity: 0; }
+  50% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 1; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes title-reveal {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+@keyframes scissor-snip {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  75% { transform: rotate(15deg); }
+}
+
+@keyframes paper-flip {
+  0% { transform: scaleX(0) rotateY(0deg); }
+  60% { transform: scaleX(1.1) rotateY(10deg); }
+  100% { transform: scaleX(1) rotateY(0deg); }
+}
+
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  0% { opacity: 0; transform: translateX(-40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  0% { opacity: 0; transform: translateX(40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply bg-ink-950 text-rice-100;
+  }
+
+  body {
+    font-family: var(--font-sans), sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-paper-500 text-white;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .reveal-hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-hidden-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .reveal-hidden-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .paper-border {
+    border: 2px solid var(--color-paper-500);
+    box-shadow: 4px 4px 0 var(--color-paper-500);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
