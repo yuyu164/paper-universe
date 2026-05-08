@@ -75,7 +75,7 @@ export default function FoldCutExperience() {
                   <svg viewBox="0 0 100 100" className="w-12 h-12 mb-2" aria-hidden="true">
                     <path d={fold.icon} fill="none" stroke="currentColor" strokeWidth="2" className={foldType === fold.id ? 'text-paper-600' : 'text-ink-400'} />
                   </svg>
-                  <span className={cn('text-sm font-serif', foldType === fold.id ? 'text-paper-700 font-bold' : 'text-ink-600')}>
+                  <span className={cn('text-sm font-serif', foldType === fold.id ? 'text-paper-700 font-bold' : 'text-ink-700')}>
                     {fold.name}
                   </span>
                   <span className="text-xs text-ink-400 mt-1">{fold.desc}</span>
@@ -117,7 +117,7 @@ export default function FoldCutExperience() {
                         />
                       </svg>
                     </div>
-                    <span className={cn('text-sm font-serif', patternId === pattern.id ? 'text-paper-700 font-bold' : 'text-ink-600')}>
+                    <span className={cn('text-sm font-serif', patternId === pattern.id ? 'text-paper-700 font-bold' : 'text-ink-700')}>
                       {pattern.name}
                     </span>
                   </button>

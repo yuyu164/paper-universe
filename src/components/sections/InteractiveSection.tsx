@@ -20,7 +20,7 @@ export default function InteractiveSection() {
   const [activeTab, setActiveTab] = useState<TabId>('fold-cut')
 
   return (
-    <section className="bg-rice-50 py-16 px-6 md:py-24 md:px-8">
+    <section className="bg-rice-200 py-16 px-6 md:py-24 md:px-8">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
           <SectionTitle

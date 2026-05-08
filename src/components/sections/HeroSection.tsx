@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import ScrollIndicator from '@/components/ui/ScrollIndicator'
 
+import Image from 'next/image'
+
 export default function HeroSection() {
   const [paperVisible, setPaperVisible] = useState(false)
   const [titleVisible, setTitleVisible] = useState(false)
@@ -13,12 +15,12 @@ export default function HeroSection() {
     const t1 = setTimeout(() => setPaperVisible(true), 200)
     const t2 = setTimeout(() => setTitleVisible(true), 1200)
     const t3 = setTimeout(() => setSubtitleVisible(true), 1600)
-    const t4 = setTimeout(() => setPaperFaded(true), 2400)
+    // 移除 paperFaded 定时器，让图片一直显示
+    // const t4 = setTimeout(() => setPaperFaded(true), 2400)
     return () => {
       clearTimeout(t1)
       clearTimeout(t2)
       clearTimeout(t3)
-      clearTimeout(t4)
     }
   }, [])
 
@@ -73,26 +75,36 @@ export default function HeroSection() {
       <div className="relative z-10 flex flex-col items-center justify-center">
         <div
           className={cn_paper(
-            'w-64 h-80 md:w-96 md:h-[28rem] bg-white shadow-2xl transition-all duration-1000',
-            paperVisible ? 'animate-paper-unfold' : 'opacity-0 scale-x-0',
-            paperFaded ? 'opacity-0' : ''
+            'w-64 h-80 md:w-[28rem] md:h-[28rem] bg-white shadow-2xl transition-all duration-1000 relative overflow-hidden',
+            paperVisible ? 'animate-paper-unfold' : 'opacity-0 scale-x-0'
           )}
           style={{ transformOrigin: 'left center' }}
-        />
+        >
+          <Image
+            src="/images/hero/hero-center.png"
+            alt="Hero Image"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
 
         <h1
-          className={`absolute font-serif font-black text-4xl md:text-7xl text-white transition-all duration-800 ${
-            titleVisible ? 'animate-title-reveal' : 'opacity-0'
-          }`}
+          className={`absolute font-serif font-black text-4xl md:text-7xl text-[#1a1a1a] transition-all duration-800 drop-shadow-md ${titleVisible ? 'animate-title-reveal' : 'opacity-0'
+            }`}
+          style={{ textShadow: '2px 2px 8px rgba(255,255,255,0.8), -1px -1px 0 rgba(255,255,255,0.8), 1px -1px 0 rgba(255,255,255,0.8), -1px 1px 0 rgba(255,255,255,0.8)' }}
         >
           纸间万象
         </h1>
 
         <p
-          className={`mt-4 font-sans font-light text-rice-300 text-sm md:text-base tracking-wider transition-all duration-800 ${
-            subtitleVisible ? 'animate-fade-up' : 'opacity-0'
-          }`}
-          style={{ position: 'relative', top: titleVisible ? '0' : '20px' }}
+          className={`mt-6 font-sans font-light text-rice-200 text-sm md:text-base tracking-[0.2em] transition-all duration-800 ${subtitleVisible ? 'animate-fade-up' : 'opacity-0'
+            }`}
+          style={{
+            position: 'relative',
+            top: titleVisible ? '0' : '20px',
+            textShadow: '0 2px 4px rgba(0,0,0,0.5)'
+          }}
         >
           Between the cuts, a universe unfolds
         </p>

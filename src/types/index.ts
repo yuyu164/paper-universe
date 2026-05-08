@@ -21,7 +21,7 @@ export interface Pattern {
   name: string
   meaning: string
   description: string
-  svgPath: string
+  image: string
   category: '吉祥纹' | '生肖' | '花鸟' | '人物'
 }
 

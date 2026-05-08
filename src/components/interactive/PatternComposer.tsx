@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 import { cn } from '@/lib/cn'
 import { patterns } from '@/data/patterns'
@@ -81,13 +82,16 @@ export default function PatternComposer() {
                     key={pattern.id}
                     transform={`translate(${offset}, ${offset})`}
                   >
-                    <path
-                      d={pattern.svgPath}
-                      fill={scheme.fg}
-                      stroke={scheme.fg}
-                      strokeWidth="0.3"
-                      opacity="0.8"
-                    />
+                    <foreignObject x="10" y="10" width="80" height="80">
+                      <div className="relative w-full h-full opacity-80 mix-blend-multiply" style={{ backgroundColor: scheme.fg }}>
+                        <Image
+                          src={pattern.image}
+                          alt={pattern.name}
+                          fill
+                          className="object-contain drop-shadow-md mix-blend-screen"
+                        />
+                      </div>
+                    </foreignObject>
                   </g>
                 )
               })}
@@ -102,7 +106,7 @@ export default function PatternComposer() {
         </div>
 
         <div className="flex flex-wrap gap-3 justify-center">
-          <span className="text-sm font-sans text-ink-600 self-center">轮廓：</span>
+          <span className="text-sm font-sans text-ink-700 self-center">轮廓：</span>
           {shapeOptions.map((s) => (
             <button
               key={s.id}
@@ -122,7 +126,7 @@ export default function PatternComposer() {
         </div>
 
         <div className="flex flex-wrap gap-3 justify-center">
-          <span className="text-sm font-sans text-ink-600 self-center">配色：</span>
+          <span className="text-sm font-sans text-ink-700 self-center">配色：</span>
           {colorKeys.map((c) => (
             <button
               key={c.id}
@@ -146,7 +150,7 @@ export default function PatternComposer() {
         <h3 className="text-lg font-serif font-bold text-ink-900 mb-4">
           选择纹样元素
         </h3>
-        <p className="text-sm text-ink-600 mb-4">
+        <p className="text-sm text-ink-700 mb-4">
           点击纹样添加或移除，可多选组合
         </p>
         <div className="grid grid-cols-2 gap-3">
@@ -163,17 +167,20 @@ export default function PatternComposer() {
               )}
               aria-pressed={selectedPatterns.includes(pattern.id)}
             >
-              <svg viewBox="0 0 100 100" className="w-12 h-12 mb-1" aria-hidden="true">
-                <path
-                  d={pattern.svgPath}
-                  fill={selectedPatterns.includes(pattern.id) ? '#DC2626' : '#6b7280'}
-                  stroke={selectedPatterns.includes(pattern.id) ? '#DC2626' : '#6b7280'}
-                  strokeWidth="0.5"
+              <div className="relative w-12 h-12 mb-1">
+                <Image
+                  src={pattern.image}
+                  alt={pattern.name}
+                  fill
+                  className={cn(
+                    "object-contain transition-all duration-200",
+                    selectedPatterns.includes(pattern.id) ? "" : "grayscale opacity-50"
+                  )}
                 />
-              </svg>
+              </div>
               <span className={cn(
                 'text-xs font-serif',
-                selectedPatterns.includes(pattern.id) ? 'text-paper-600 font-bold' : 'text-ink-600'
+                selectedPatterns.includes(pattern.id) ? 'text-paper-600 font-bold' : 'text-ink-700'
               )}>
                 {pattern.name}
               </span>

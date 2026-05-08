@@ -7,7 +7,7 @@ interface ArtisanCardProps {
 
 export default function ArtisanCard({ artisan }: ArtisanCardProps) {
   return (
-    <article className="snap-center min-w-[300px] md:min-w-[360px] bg-white rounded-sm overflow-hidden flex-shrink-0 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+    <article className="w-[85vw] sm:w-[320px] md:w-[360px] bg-white rounded-sm overflow-hidden flex-shrink-0 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
       <div className="w-full h-64 relative">
         <Image
           src={artisan.image}
@@ -28,7 +28,7 @@ export default function ArtisanCard({ artisan }: ArtisanCardProps) {
             &ldquo;{artisan.quote}&rdquo;
           </p>
         </blockquote>
-        <p className="text-sm text-ink-600 mt-3 leading-relaxed">
+        <p className="text-sm text-ink-700 mt-3 leading-relaxed">
           {artisan.bio}
         </p>
       </div>
