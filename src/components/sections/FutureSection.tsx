@@ -18,13 +18,14 @@ export default function FutureSection() {
       : modernApps.filter((app) => app.category === activeCategory)
 
   return (
-    <section className="bg-ink-950 py-16 px-6 md:py-24 md:px-8">
+    <section className="bg-paper-50 py-16 px-6 md:py-24 md:px-8">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
           <SectionTitle
             title="纸上的未来"
             subtitle="Future of Paper-cutting"
             description="传统剪纸正在以全新的面貌走进当代生活。"
+            light={false}
           />
         </ScrollReveal>
 
@@ -39,7 +40,7 @@ export default function FutureSection() {
                   'focus-visible:ring-2 focus-visible:ring-paper-500 focus-visible:outline-none',
                   activeCategory === category
                     ? 'bg-paper-500 text-white'
-                    : 'border border-rice-400 text-rice-300 hover:border-paper-500'
+                    : 'border border-gray-300 text-gray-600 hover:border-paper-500 hover:text-paper-500'
                 )}
                 aria-pressed={activeCategory === category}
               >
@@ -58,7 +59,7 @@ export default function FutureSection() {
         </div>
 
         {filteredApps.length === 0 && (
-          <p className="text-center text-rice-400 font-sans py-12">
+          <p className="text-center text-ink-500 font-sans py-12">
             该分类暂无案例
           </p>
         )}

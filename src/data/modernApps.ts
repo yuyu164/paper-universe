@@ -14,7 +14,7 @@ export const modernApps: ModernApp[] = [
     title: '剪纸 × Apple 马年限定手机壳',
     description: 'Apple 邀请中国剪纸艺术家陈粉丸设计马年限定手机壳，将传统剪纸与现代艺术语言融合。',
     category: '品牌设计',
-    image: '/images/modern/apple.png',
+    image: '/images/modern/apple(1).png',
   },
   {
     id: 'tea-packaging',

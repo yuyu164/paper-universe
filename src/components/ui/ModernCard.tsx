@@ -7,8 +7,8 @@ interface ModernCardProps {
 
 export default function ModernCard({ app }: ModernCardProps) {
   return (
-    <article className="bg-ink-900 border border-ink-800 rounded-sm overflow-hidden transition-all duration-300 hover:border-paper-700 hover:-translate-y-1">
-      <div className="h-48 relative">
+    <article className="bg-white border border-paper-200 rounded-sm overflow-hidden transition-all duration-300 hover:border-paper-500 hover:shadow-lg hover:-translate-y-1">
+      <div className="h-48 relative bg-paper-50/50">
         <Image
           src={app.image}
           alt={app.title}
@@ -17,8 +17,8 @@ export default function ModernCard({ app }: ModernCardProps) {
         />
       </div>
       <div className="p-4">
-        <h3 className="text-base font-serif text-rice-100">{app.title}</h3>
-        <p className="text-sm text-rice-400 mt-1 leading-relaxed">
+        <h3 className="text-base font-serif text-gray-900">{app.title}</h3>
+        <p className="text-sm text-gray-600 mt-1 leading-relaxed">
           {app.description}
         </p>
       </div>
