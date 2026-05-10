@@ -9,14 +9,11 @@ export default function HeroSection() {
   const [paperVisible, setPaperVisible] = useState(false)
   const [titleVisible, setTitleVisible] = useState(false)
   const [subtitleVisible, setSubtitleVisible] = useState(false)
-  const [paperFaded, setPaperFaded] = useState(false)
 
   useEffect(() => {
     const t1 = setTimeout(() => setPaperVisible(true), 200)
     const t2 = setTimeout(() => setTitleVisible(true), 1200)
     const t3 = setTimeout(() => setSubtitleVisible(true), 1600)
-    // 移除 paperFaded 定时器，让图片一直显示
-    // const t4 = setTimeout(() => setPaperFaded(true), 2400)
     return () => {
       clearTimeout(t1)
       clearTimeout(t2)

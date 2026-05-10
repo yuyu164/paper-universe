@@ -7,7 +7,7 @@ export const artisans: Artisan[] = [
     style: '陕北剪纸',
     years: 60,
     quote: '剪刀一拿就是一辈子，纸上的世界比外面的还大。',
-    image: '/images/artisans/gao-jinai.png',
+    image: '/images/artisans/gao-jinai(1).png',
     bio: '陕西延安安塞人，国家级非遗传承人，从十三岁起跟随母亲学习剪纸，六十年如一日坚守传统技法。她的作品以粗犷豪放著称，善于表现陕北民俗生活，代表作《抓髻娃娃》被中国美术馆收藏。',
   },
   {

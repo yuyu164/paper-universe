@@ -145,3 +145,61 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =========================================
+   拼图小游戏动画
+   ========================================= */
+
+/* 飞回候选区的动画 */
+@keyframes flyIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fly-in {
+  animation: flyIn 0.3s ease-out;
+}
+
+/* 放置成功的动画 */
+@keyframes snap {
+  0% { transform: scale(1.1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.animate-snap {
+  animation: snap 0.2s ease-out;
+}
+
+/* 错误提示闪烁 */
+@keyframes flashRed {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: rgba(220, 38, 38, 0.2); }
+}
+
+.animate-flash-red {
+  animation: flashRed 0.3s ease-in-out 2;
+}
+
+/* 纸屑飘落 */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* 评分/完成弹层 (复用或补充) */
+.animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
